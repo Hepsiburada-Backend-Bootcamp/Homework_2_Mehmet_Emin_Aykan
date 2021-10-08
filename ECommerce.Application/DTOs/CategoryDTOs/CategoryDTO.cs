@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerce.Domain.Entities;
 
-namespace ECommerce.Domain.Repositories
+namespace ECommerce.Application.DTOs.CategoryDTOs
 {
-    public interface IOrderRepository:IRepository<Order>
+    public class CategoryDTO
     {
+        public string CategoryName { get; set; }
     }
 }

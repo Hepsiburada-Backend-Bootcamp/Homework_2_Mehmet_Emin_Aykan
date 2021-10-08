@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerce.Domain.Entities;
 
-namespace ECommerce.Domain.Repositories
+namespace ECommerce.Application.DTOs.BrandDTOs
 {
-    public interface IProductRepository : IRepository<Product>
+    public class BrandDTO
     {
+        public string BrandName { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using ECommerce.Domain.Entities;
 
 namespace ECommerce.Domain.Repositories
 {
-    public interface IOrderItemRepository:IRepository<OrderItem>
+    public interface IBrandRepository : IRepository<Brand>
     {
     }
 }

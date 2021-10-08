@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 using ECommerce.Application.DTOs.BrandDTOs;
 using ECommerce.Application.DTOs.CategoryDTOs;
 using ECommerce.Application.Services.Brand;
+using ECommerce.Application.Services.Category;
 
 namespace ECommerce.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class BrandsController : ControllerBase
     {
         private readonly IBrandService _brandService;
 
-        public ProductsController(IBrandService brandService)
+        public BrandsController(IBrandService brandService)
         {
             _brandService = brandService;
         }

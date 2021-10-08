@@ -1,30 +1,28 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
-using ECommerce.Application.DTOs.OrderDTOs;
+using ECommerce.Application.DTOs.BrandDTOs;
+using ECommerce.Application.DTOs.CategoryDTOs;
+using ECommerce.Application.DTOs.CustomerDTOs;
 using ECommerce.Application.DTOs.ProductDTOs;
-using ECommerce.Application.DTOs.UserDTOs;
 
 namespace ECommerce.Application
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-            CreateMap<CreateUserDTO, Domain.Entities.User>().ReverseMap();
+            CreateMap<CreateCustomerDTO, Domain.Entities.Customer>().ReverseMap();
+            CreateMap<GetCustomerDTO, Domain.Entities.Customer>().ReverseMap();
 
-            CreateMap<Domain.Entities.User, GetUserDTO>();
+            CreateMap<CategoryDTO, Domain.Entities.Category>().ReverseMap();
+            CreateMap<BrandDTO, Domain.Entities.Brand>().ReverseMap();
+            CreateMap<ProductDTO, Domain.Entities.Product>().ReverseMap();
 
-            CreateMap<UpdateUserDTO, Domain.Entities.User>().ReverseMap();
 
-            CreateMap<CreateProductDTO, Domain.Entities.Product>().ReverseMap();
-
-            CreateMap<UpdateProductDTO, Domain.Entities.Product>().ReverseMap();
-
-            CreateMap<GetOrderDTO, Domain.Entities.Order>().ReverseMap();
         }
     }
 }

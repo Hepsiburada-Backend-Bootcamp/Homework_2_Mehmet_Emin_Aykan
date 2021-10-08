@@ -22,9 +22,9 @@ namespace ECommerceApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ECommerceDbContext>(
-                options => options.UseNpgsql(Configuration.GetConnectionString("Default"))
-                );
+            //services.AddDbContext<ECommerceDbContext>(
+            //    options => options.UseNpgsql(Configuration.GetConnectionString("Default"))
+            //    );
 
             services.AddApplicationModule(Configuration);
             services.AddControllers();

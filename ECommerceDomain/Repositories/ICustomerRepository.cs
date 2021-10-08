@@ -7,8 +7,7 @@ using ECommerce.Domain.Entities;
 
 namespace ECommerce.Domain.Repositories
 {
-    public interface IUserRepository:IRepository<User>
+    public interface ICustomerRepository : IRepository<Customer>
     {
-        Task<User> GetById(int id);
     }
 }

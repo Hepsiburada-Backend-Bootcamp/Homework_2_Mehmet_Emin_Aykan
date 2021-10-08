@@ -9,12 +9,13 @@ using ECommerce.Infrastructure.Context;
 
 namespace ECommerce.Infrastructure.Repositories
 {
-    public class CategoryRepository:Repository<Category>,ICategoryRepository
+    public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
-        private readonly ECommerceDbContext _context;
-        public CategoryRepository(ECommerceDbContext dbContext) : base(dbContext)
+        private readonly ECommerceDbContext _dbContext;
+
+        public CategoryRepository(ECommerceDbContext dbContext):base(dbContext)
         {
-            _context = dbContext;
+            _dbContext = dbContext;
         }
     }
 }

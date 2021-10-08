@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Infrastructure.Repositories
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly ECommerceDbContext _dbContext;
         DbSet<TEntity> _dbSet;
@@ -18,35 +18,34 @@ namespace ECommerce.Infrastructure.Repositories
         public Repository(ECommerceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _dbSet = _dbContext.Set<TEntity>();
+            _dbSet = dbContext.Set<TEntity>();
         }
 
         public async Task Add(TEntity entity)
         {
-            await _dbSet.AddAsync(entity);
+               _dbSet.Add(entity); 
+               await _dbContext.SaveChangesAsync();
         }
 
         public async Task Delete(TEntity entity)
         {
             _dbSet.Remove(entity);
-
-            await _dbContext.SaveChangesAsync();
+              await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<TEntity>> Get(Expression<Func<TEntity, bool>> filter)
+        public async Task<TEntity> Get(Expression<Func<TEntity, bool>> filter)
         {
-            return await _dbSet.Where(filter).ToListAsync();
+            return await _dbSet.SingleOrDefaultAsync(filter);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public List<TEntity> GetAll()
         {
-            return await _dbSet.ToListAsync();
+            return _dbSet.ToList();
         }
 
         public async Task Update(TEntity entity)
         {
             _dbSet.Update(entity);
-
             await _dbContext.SaveChangesAsync();
         }
     }

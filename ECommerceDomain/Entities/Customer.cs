@@ -1,23 +1,23 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using ECommerce.Domain.Entities;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ECommerce.Domain.Entities
 {
-    public class User
+    public class Customer
     {
         [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Required")]
-        [StringLength(50,MinimumLength =1,ErrorMessage ="Name should be between 1-50 characters")]
+        [StringLength(int.MaxValue, MinimumLength = 1, ErrorMessage = "Name should not less then one character")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Required")]
-        [StringLength(50,MinimumLength =1,ErrorMessage ="Name should be between 1-50 characters")]
+        [StringLength(int.MaxValue, MinimumLength = 1, ErrorMessage = "Last Name should not less then one character")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Required")]

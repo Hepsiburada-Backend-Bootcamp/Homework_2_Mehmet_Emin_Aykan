@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Domain.Entities
 {
-    public class Category
+    public class Brand
     {
         [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Required")]
         [StringLength(int.MaxValue, MinimumLength = 1, ErrorMessage = "Name should not less then one character")]
-        public string CategoryName { get; set; }
+        public string BrandName { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

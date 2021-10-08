@@ -4,11 +4,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerce.Application.IServices;
 using ECommerce.Application.Services;
+using ECommerce.Application.Services.Brand;
+using ECommerce.Application.Services.Category;
 using Microsoft.Extensions.DependencyInjection;
 using ECommerce.Infrastructure;
 using Microsoft.Extensions.Configuration;
+using ECommerce.Application.Services.Customer;
+using ECommerce.Application.Services.Product;
 
 namespace ECommerce.Application
 {
@@ -18,7 +21,11 @@ namespace ECommerce.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddScoped<IUserService,UserService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+
+            services.AddScoped<IBrandService, BrandService>();
 
             services.AddScoped<IProductService, ProductService>();
 

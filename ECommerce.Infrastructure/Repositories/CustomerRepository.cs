@@ -9,13 +9,13 @@ using ECommerce.Infrastructure.Context;
 
 namespace ECommerce.Infrastructure.Repositories
 {
-    public class OrderRepository:Repository<Order>,IOrderRepository
+    public class CustomerRepository:Repository<Customer>,ICustomerRepository
     {
-        private readonly ECommerceDbContext _context;
-        public OrderRepository(ECommerceDbContext dbContext) : base(dbContext)
-        {
-            _context = dbContext;
-        }
+        private readonly ECommerceDbContext _dbContext;
 
+        public CustomerRepository(ECommerceDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
     }
 }

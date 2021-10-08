@@ -4,55 +4,56 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ECommerce.Application.DTOs.BrandDTOs;
 using ECommerce.Application.DTOs.CategoryDTOs;
-using ECommerce.Application.Services.Brand;
+using ECommerce.Application.DTOs.CustomerDTOs;
+using ECommerce.Application.Services.Category;
+using ECommerce.Application.Services.Customer;
 
 namespace ECommerce.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
-        private readonly IBrandService _brandService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductsController(IBrandService brandService)
+        public CategoriesController(ICategoryService categoryService)
         {
-            _brandService = brandService;
+            _categoryService = categoryService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] BrandDTO brand)
+        public async Task<IActionResult> Add([FromBody] CategoryDTO category)
         {
-            await _brandService.Add(brand);
+            await _categoryService.Add(category);
             return Ok(new { status = true, errors = "" });
         }
 
         [HttpPost("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _brandService.Delete(id);
+            await _categoryService.Delete(id);
             return Ok(new { status = true, errors = "" });
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var getAll = _brandService.GetAll();
+            var getAll = _categoryService.GetAll();
             return Ok(new { status = true, data = getAll, errors = "" });
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var getById = await _brandService.GetById(id);
+            var getById = await _categoryService.GetById(id);
             return Ok(new { status = true, data = getById, errors = "" });
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Delete(int id, [FromBody] BrandDTO brand)
+        public async Task<IActionResult> Delete(int id, [FromBody] CategoryDTO category)
         {
-            await _brandService.Update(id, brand);
+            await _categoryService.Update(id, category);
             return Ok(new { status = true, errors = "" });
         }
     }
