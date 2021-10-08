@@ -19,4 +19,4 @@
     - Proje birden fazla db ye destek verebilmeli ve runtime da db değişikliği yapılabilmeli(design patternlerin kullanımı düşünülmelidir.)
     - Mediator pattern(mediatr kütüphanesi kullanılabilir.) tercih edilebilir.
     
-    ## Not completed. Still working on the project. :(
+    
